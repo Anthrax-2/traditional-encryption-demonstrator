@@ -15,13 +15,19 @@ def normalize(input: str, numbers_allowed=False) -> str:
     return "".join([i for i in input if i != " "]).lower()
 
 
+def validate_gcd(k, n):
+    if gcd(k, n) != 1:
+        return False
+    return True
+
+
 def invert_number(k: int, n: int):
     """
     :param k:   number to be inverted
     :param n:   length of domain
     :return:    modular multiplicative inverse t1
     """
-    if gcd(k, n) == 1:
+    if validate_gcd(k, n):
         r1 = n
         r2 = k
         t1, t2 = 0, 1
