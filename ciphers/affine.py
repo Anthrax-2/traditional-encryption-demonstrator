@@ -9,14 +9,14 @@ def encrypt(plain_text: str, key_1: int, key_2: int) -> str:
 
     normalized_plain_text = normalize(plain_text)
 
-    c_val = []
+    c_values = []
     p_s = [p for p in normalized_plain_text]
 
     for p in p_s:
         s = (CHAR_TO_NUM[p] * key_1) + key_2
-        c_val.append(s % 26)
+        c_values.append(s % 26)
 
-    return "".join([NUM_TO_CHAR[i] for i in c_val]).upper()
+    return "".join([NUM_TO_CHAR[i] for i in c_values]).upper()
 
 
 def decrypt(cipher: str, key_1: int, key_2: int) -> str:
@@ -26,14 +26,14 @@ def decrypt(cipher: str, key_1: int, key_2: int) -> str:
 
     normalized_cipher = normalize(cipher)
 
-    p_val = []
+    p_values = []
     c_s = [c for c in normalized_cipher]
 
     for c in c_s:
         s = (CHAR_TO_NUM[c] - key_2) * invert_number(key_1, 26)
-        p_val.append(s % 26)
+        p_values.append(s % 26)
 
-    return "".join([NUM_TO_CHAR[i] for i in p_val]).lower()
+    return "".join([NUM_TO_CHAR[i] for i in p_values]).lower()
 
 
 print(encrypt("hello", 7, 2))
