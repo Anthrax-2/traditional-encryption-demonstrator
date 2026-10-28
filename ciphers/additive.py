@@ -1,9 +1,12 @@
-import random
 from common import CHAR_TO_NUM, NUM_TO_CHAR, normalize
 
 
 def encrypt(plain_text: str, key: int) -> str:
-
+    """
+    :param plain_text:   text to be ciphered
+    :param key:          ciphering key
+    :return:             ciphered text C
+    """
     normalized_plain_text = normalize(plain_text)
 
     c_val = []
@@ -16,7 +19,11 @@ def encrypt(plain_text: str, key: int) -> str:
 
 
 def decrypt(cipher: str, key: int) -> str:
-
+    """
+    :param cipher:      text to be deciphered
+    :param key:         ciphering key
+    :return:            deciphered text P
+    """
     normalized_cipher = normalize(cipher)
 
     p_val = []
