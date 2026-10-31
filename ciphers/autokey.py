@@ -73,6 +73,3 @@ def decrypt(cipher: str, key: str | int) -> str:
             p_values.append(p_val)
 
     return "".join([NUM_TO_CHAR[p_val] for p_val in p_values]).lower()
-
-
-print(decrypt("UEXQSY", "cat"))
