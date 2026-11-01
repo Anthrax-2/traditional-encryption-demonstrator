@@ -5,6 +5,7 @@ import additive
 def encrypt(plain_text: str, key: str | int) -> str:
 
     normalized_plain_text = normalize(plain_text)
+    normalized_key = normalize(key)
 
     p_values = [CHAR_TO_NUM[p] for p in normalized_plain_text]
     c_values = []
@@ -16,8 +17,8 @@ def encrypt(plain_text: str, key: str | int) -> str:
         f_key[1:] = p_values[: len(p_values) - 1]
 
     elif isinstance(key, str):
-        f_key = [CHAR_TO_NUM[k] for k in key]
-        f_key[len(key) :] = p_values[: len(p_values) - len(key)]
+        f_key = [CHAR_TO_NUM[k] for k in normalized_key]
+        f_key[len(normalized_key) :] = p_values[: len(p_values) - len(normalized_key)]
 
     for p_val, k in zip(p_values, f_key):
         c_values.append(additive.encrypt(NUM_TO_CHAR[p_val], k))
@@ -27,7 +28,9 @@ def encrypt(plain_text: str, key: str | int) -> str:
 
 # This 100% needs refactoring
 def decrypt(cipher: str, key: str | int) -> str:
+
     normalized_cipher = normalize(cipher)
+    normalized_key = normalize(key)
 
     c_values = [CHAR_TO_NUM[c] for c in normalized_cipher]
     p_values = []
@@ -52,11 +55,11 @@ def decrypt(cipher: str, key: str | int) -> str:
 
     elif isinstance(key, str):
 
-        f_key[: len(key)] = [CHAR_TO_NUM[k] for k in key]
+        f_key[: len(normalized_key)] = [CHAR_TO_NUM[k] for k in normalized_key]
 
         i = 0
 
-        while i < len(key):
+        while i < len(normalized_key):
 
             p = additive.decrypt(NUM_TO_CHAR[c_values[i]], f_key[i])
             p_val = CHAR_TO_NUM[p]
@@ -64,7 +67,7 @@ def decrypt(cipher: str, key: str | int) -> str:
 
             i += 1
 
-        f_key[len(key) :] = p_values[: len(c_values) - len(key)]
+        f_key[len(normalized_key) :] = p_values[: len(c_values) - len(normalized_key)]
 
         for j in range(i, len(f_key)):
 
