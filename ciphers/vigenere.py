@@ -1,4 +1,4 @@
-from common import NUM_TO_CHAR, CHAR_TO_NUM, normalize
+from common import CHAR_TO_NUM, normalize
 import additive
 
 
@@ -25,7 +25,7 @@ def encrypt(plain_text: str, key: str) -> str:
 
 
 def decrypt(cipher: str, key: str) -> str:
-    
+
     normalized_cipher = normalize(cipher)
     normalized_key = normalize(key)
 
