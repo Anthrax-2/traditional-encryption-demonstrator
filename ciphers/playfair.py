@@ -23,9 +23,27 @@ def build_key_matrix(key: str) -> npt.NDArray[np.str_]:
 
 
 def encrypt(plain_text: str, key: str) -> str:
+    """
+    :param plain_text:  text to be ciphered
+    :param key:         key
+    :return:            ciphered text
+
+    Note: In this implamentation I replaced every "q" in "plain_text" with a "k" instead of putting i/j in the same field in "key_matrix" for code simplicity
+
+    """
 
     normalized_plain_text = normalize(plain_text)
     normalized_key = normalize(key)
+
+    s = ""
+
+    for letter in normalized_plain_text:
+        if letter == "q":
+            s += "k"
+        else:
+            s += letter
+
+    normalized_plain_text = s
 
     key_matrix = build_key_matrix(normalized_key)
 
@@ -67,6 +85,44 @@ def encrypt(plain_text: str, key: str) -> str:
         else:
             new_pair[0, 0] = key_matrix[i, y].upper()
             new_pair[0, 1] = key_matrix[x, j].upper()
+
+        new_pairs[row, :] = new_pair
+
+    return "".join(new_pairs.flatten())
+
+
+def decrypt(cipher: str, key: str) -> str:
+
+    normalized_cipher = normalize(cipher)
+    normalized_key = normalize(key)
+
+    key_matrix = build_key_matrix(normalized_key)
+
+    letters = [letter for letter in normalized_cipher]
+
+    pairs_matrix = np.array(letters, dtype="U").reshape(-1, 2)
+
+    new_pairs = np.full(shape=(pairs_matrix.shape), fill_value=None, dtype="U")
+
+    for row, pair in enumerate(pairs_matrix):
+
+        new_pair = np.full(shape=(1, 2), fill_value=None, dtype="U")
+
+        i, j = np.where(key_matrix == pair[0])
+        x, y = np.where(key_matrix == pair[1])
+        i, j, x, y = int(i[0]), int(j[0]), int(x[0]), int(y[0])
+
+        if i == x:
+            new_pair[0, 0] = key_matrix[i, (j - 1) % 5]
+            new_pair[0, 1] = key_matrix[x, (y - 1) % 5]
+
+        elif j == y:
+            new_pair[0, 0] = key_matrix[(i - 1) % 5, j]
+            new_pair[0, 1] = key_matrix[(x - 1) % 5, y]
+
+        else:
+            new_pair[0, 0] = key_matrix[i, y]
+            new_pair[0, 1] = key_matrix[x, j]
 
         new_pairs[row, :] = new_pair
 
