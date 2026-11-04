@@ -1,4 +1,4 @@
-from common import NUM_TO_CHAR, normalize
+from .common import NUM_TO_CHAR, normalize
 from string import ascii_lowercase
 import numpy as np
 import numpy.typing as npt

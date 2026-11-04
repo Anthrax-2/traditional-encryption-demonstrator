@@ -1,4 +1,4 @@
-from common import CHAR_TO_NUM, NUM_TO_CHAR, normalize, invert_number, validate_gcd
+from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize, invert_number, validate_gcd
 from math import gcd
 
 

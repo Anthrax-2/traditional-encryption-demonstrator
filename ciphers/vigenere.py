@@ -1,4 +1,4 @@
-from common import CHAR_TO_NUM, normalize
+from .common import CHAR_TO_NUM, normalize
 import additive
 
 

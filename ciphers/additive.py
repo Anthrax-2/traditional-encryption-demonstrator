@@ -1,4 +1,4 @@
-from common import CHAR_TO_NUM, NUM_TO_CHAR, normalize
+from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize
 
 
 def encrypt(plain_text: str, key: int) -> str:

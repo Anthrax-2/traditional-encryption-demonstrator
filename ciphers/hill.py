@@ -1,6 +1,6 @@
 import numpy as np
 import numpy.typing as npt
-from common import invert_number, normalize, NUM_TO_CHAR, CHAR_TO_NUM, validate_gcd
+from .common import invert_number, normalize, NUM_TO_CHAR, CHAR_TO_NUM, validate_gcd
 from math import gcd
 
 
