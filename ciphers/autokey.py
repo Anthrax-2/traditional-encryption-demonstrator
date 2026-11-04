@@ -1,5 +1,5 @@
 from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize
-import additive
+from . import additive
 
 
 def encrypt(plain_text: str, key: str | int) -> str:
