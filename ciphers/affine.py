@@ -34,7 +34,3 @@ def decrypt(cipher: str, key_1: int, key_2: int) -> str:
         p_values.append(s % 26)
 
     return "".join([NUM_TO_CHAR[i] for i in p_values]).lower()
-
-
-print(encrypt("hello", 7, 2))
-print(decrypt("ZEBBW", 7, 2))

@@ -14,7 +14,7 @@ def encrypt(plain_text: str, key: npt.NDArray) -> str:
         or np.linalg.det(key) == 0
         or gcd(int(round(np.linalg.det(key))), 26) != 1
     ):
-        return None
+        raise ValueError("key is invalid")
 
     normalized_plain_text = normalize(plain_text)
 
@@ -44,7 +44,7 @@ def decrypt(cipher: str, key: npt.NDArray) -> str:
         or np.linalg.det(key) == 0
         or gcd(int(round(np.linalg.det(key))), 26) != 1
     ):
-        return None
+        return ValueError("key is invalid")
 
     normalized_cipher = normalize(cipher)
 
