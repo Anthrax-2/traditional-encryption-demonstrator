@@ -9,7 +9,11 @@ def encrypt(plain_text: str, key: npt.NDArray) -> str:
     n = key.shape[0]
     m = key.shape[1]
 
-    if n != m or np.linalg.det(key) == 0 or gcd(int(round(np.linalg.det(key))), 26) != 1:
+    if (
+        n != m
+        or np.linalg.det(key) == 0
+        or gcd(int(round(np.linalg.det(key))), 26) != 1
+    ):
         return None
 
     normalized_plain_text = normalize(plain_text)
@@ -35,7 +39,11 @@ def decrypt(cipher: str, key: npt.NDArray) -> str:
     n = key.shape[0]
     m = key.shape[1]
 
-    if n != m or np.linalg.det(key) == 0 or gcd(int(round(np.linalg.det(key))), 26) != 1:
+    if (
+        n != m
+        or np.linalg.det(key) == 0
+        or gcd(int(round(np.linalg.det(key))), 26) != 1
+    ):
         return None
 
     normalized_cipher = normalize(cipher)
@@ -68,6 +76,3 @@ def adj(matrix: npt.NDArray) -> npt.NDArray:
 
     return (cofactors.T) % 26
 
-
-print(encrypt("attack is today", np.array([[2, 17], [3, 14]])))
-print(decrypt("FGMLISSYCZGZNC", np.array([[2, 17], [3, 14]])))
