@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "Press Start 2P";
+    src: url('/static/PressStart2P-Regular.ttf') format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: rgb(100, 100, 100);
+}
+
+a:hover {
+    color: rgb(150, 150, 150);
+}
+
+a:active {
+    color: rgb(0, 0, 0)
+}
+
+#error {
+    color: red;
+}
+
+header {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+    background-color: rgb(150, 150, 150);
+
+}
+
+.all {
+    border: inset 10px black;
+    padding: 2rem;
+    background-color: rgb(214, 214, 214);
+}
+
+input[type="text"] {
+    border: inset;
+    background-color: rgb(214, 214, 214);
+    /* border-radius: 10px; */
+    height: 1.5rem;
+    width: 90%;
+    outline: none;
+    padding: 0.2rem;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+    caret-color: transparent;
+
+}
+
+input[type="text"]:focus:not([readonly]) {
+    border: outset rgb(100, 100, 100);
+}
+
+
+input[readonly] {
+    caret-color: transparent;
+    cursor: default;
+}
+
+select {
+    border: inset;
+    height: 1.5rem;
+    outline: none;
+    padding: 0.2rem;
+    /* border-radius: 10px; */
+    background-color: rgb(214, 214, 214);
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+}
+
+
+.content {
+    gap: 0.6rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    /* max-width: 100%; */
+}
+
+.modes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0 0.5rem 0;
+    accent-color: rgb(100, 100, 100);
+}
+
+.modes label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#enter {
+    border: inset;
+    height: 3rem;
+    width: 8rem;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    background-color: rgb(214, 214, 214);
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+
+}
+
+#enter:hover,
+select:hover {
+    border: outset rgb(100, 100, 100);
+}
