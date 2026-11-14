@@ -2,7 +2,9 @@ from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize, invert_number, validate
 from math import gcd
 
 
-def encrypt(plain_text: str, key_1: int, key_2: int) -> str:
+def encrypt(plain_text: str, key: str) -> str:
+
+    key_1, key_2 = [int(x) for x in key.split(" ")]
 
     if not validate_gcd(key_1, 26):
         raise ValueError("the greatest common devisor of 26 and key_1 must be 1")
@@ -19,7 +21,9 @@ def encrypt(plain_text: str, key_1: int, key_2: int) -> str:
     return "".join([NUM_TO_CHAR[i] for i in c_values]).upper()
 
 
-def decrypt(cipher: str, key_1: int, key_2: int) -> str:
+def decrypt(cipher: str, key: str) -> str:
+
+    key_1, key_2 = [int(x) for x in key.split(" ")]
 
     if not validate_gcd(key_1, 26):
         raise ValueError("the greatest common devisor of 26 and key_1 must be 1")
@@ -34,3 +38,4 @@ def decrypt(cipher: str, key_1: int, key_2: int) -> str:
         p_values.append(s % 26)
 
     return "".join([NUM_TO_CHAR[i] for i in p_values]).lower()
+

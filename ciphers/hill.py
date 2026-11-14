@@ -4,7 +4,15 @@ from .common import invert_number, normalize, NUM_TO_CHAR, CHAR_TO_NUM, validate
 from math import gcd
 
 
-def encrypt(plain_text: str, key: npt.NDArray) -> str:
+def encrypt(plain_text: str, key_str: str) -> str:
+
+    key = None
+
+    try:
+        rows = key_str.split(";")
+        key = np.array([[int(x) for x in row.split(",")] for row in rows])
+    except:
+        raise ValueError("input must look like: 1, 2, 3; 2, 5, 6; 7, 8, 9")
 
     n = key.shape[0]
     m = key.shape[1]
@@ -12,7 +20,7 @@ def encrypt(plain_text: str, key: npt.NDArray) -> str:
     if (
         n != m
         or np.linalg.det(key) == 0
-        or gcd(int(round(np.linalg.det(key))), 26) != 1
+        # or gcd(int(round(np.linalg.det(key))), 26) != 1
     ):
         raise ValueError("key is invalid")
 
@@ -29,12 +37,20 @@ def encrypt(plain_text: str, key: npt.NDArray) -> str:
     return "".join([NUM_TO_CHAR[c_val].upper() for c_val in c_values])
 
 
-def decrypt(cipher: str, key: npt.NDArray) -> str:
+def decrypt(cipher: str, key_str: str) -> str:
     """
     :return:        P = C * K^-1
 
                     K^-1 = (det(K))^-1 * Adjugate(K)
     """
+
+    key = None
+    
+    try:
+        rows = key_str.split(";")
+        key = np.array([[int(x) for x in row.split(",")] for row in rows])
+    except:
+        raise ValueError("input must look like: 1, 2, 3; 2, 5, 6; 7, 8, 9")
 
     n = key.shape[0]
     m = key.shape[1]
@@ -42,9 +58,9 @@ def decrypt(cipher: str, key: npt.NDArray) -> str:
     if (
         n != m
         or np.linalg.det(key) == 0
-        or gcd(int(round(np.linalg.det(key))), 26) != 1
+        # or gcd(int(round(np.linalg.det(key))), 26) != 1
     ):
-        return ValueError("key is invalid")
+        raise ValueError("key is invalid")
 
     normalized_cipher = normalize(cipher)
 

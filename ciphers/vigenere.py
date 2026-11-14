@@ -7,6 +7,9 @@ def encrypt(plain_text: str, key: str) -> str:
     normalized_plain_text = normalize(plain_text)
     normalized_key = normalize(key)
 
+    if normalized_key == "":
+        raise ValueError("Expected 'key' to be alphabetical")
+
     p_values = [p for p in normalized_plain_text]
 
     f_key = [CHAR_TO_NUM[k] for k in normalized_key]
@@ -28,6 +31,9 @@ def decrypt(cipher: str, key: str) -> str:
 
     normalized_cipher = normalize(cipher)
     normalized_key = normalize(key)
+
+    if normalized_key == "":
+        raise ValueError("Expected 'key' to be alphabetical")
 
     c_values = [c for c in normalized_cipher]
 

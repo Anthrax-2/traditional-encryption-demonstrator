@@ -1,7 +1,7 @@
 from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize, invert_number
 
 
-def encrypt(plain_text: str, key: int) -> str:
+def encrypt(plain_text: str, key: str) -> str:
     """
     :param plain_text:   text to be ciphered
     :param key:          ciphering key
@@ -12,13 +12,13 @@ def encrypt(plain_text: str, key: int) -> str:
     c_values = []
     p_s = [p for p in normalized_plain_text]
     for p in p_s:
-        s = CHAR_TO_NUM[p] * key
+        s = CHAR_TO_NUM[p] * int(key)
         c_values.append(s % 26)
 
     return "".join([NUM_TO_CHAR[i] for i in c_values]).upper()
 
 
-def decrypt(cipher: str, key: int) -> str:
+def decrypt(cipher: str, key: str) -> str:
     """
     :param cipher:      text to be deciphered
     :param key:         ciphering key
@@ -29,7 +29,7 @@ def decrypt(cipher: str, key: int) -> str:
     p_values = []
     c_s = [c for c in normalized_cipher]
     for c in c_s:
-        s = CHAR_TO_NUM[c] * invert_number(key, 26)
+        s = CHAR_TO_NUM[c] * invert_number(int(key), 26)
         p_values.append(s % 26)
 
     return "".join([NUM_TO_CHAR[i] for i in p_values]).lower()

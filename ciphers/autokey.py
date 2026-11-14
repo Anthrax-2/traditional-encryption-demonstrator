@@ -2,7 +2,7 @@ from .common import CHAR_TO_NUM, NUM_TO_CHAR, normalize
 from . import additive
 
 
-def encrypt(plain_text: str, key: str | int) -> str:
+def encrypt(plain_text: str, key: str) -> str:
 
     normalized_plain_text = normalize(plain_text)
     normalized_key = normalize(key)
@@ -12,11 +12,11 @@ def encrypt(plain_text: str, key: str | int) -> str:
 
     f_key = None
 
-    if isinstance(key, int):
+    if key.isdigit():
         f_key = [key]
         f_key[1:] = p_values[: len(p_values) - 1]
 
-    elif isinstance(key, str):
+    else:
         f_key = [CHAR_TO_NUM[k] for k in normalized_key]
         f_key[len(normalized_key) :] = p_values[: len(p_values) - len(normalized_key)]
 
@@ -27,7 +27,7 @@ def encrypt(plain_text: str, key: str | int) -> str:
 
 
 # This 100% needs refactoring
-def decrypt(cipher: str, key: str | int) -> str:
+def decrypt(cipher: str, key: str) -> str:
 
     normalized_cipher = normalize(cipher)
     normalized_key = normalize(key)
@@ -37,8 +37,8 @@ def decrypt(cipher: str, key: str | int) -> str:
 
     f_key = [None for c in normalized_cipher]
 
-    if isinstance(key, int):
-        f_key[0] = key
+    if key.isdigit():
+        f_key[0] = int(key)
 
         i = 0
 
@@ -53,7 +53,7 @@ def decrypt(cipher: str, key: str | int) -> str:
         p_val = CHAR_TO_NUM[p]
         p_values.append(p_val)
 
-    elif isinstance(key, str):
+    else:
 
         f_key[: len(normalized_key)] = [CHAR_TO_NUM[k] for k in normalized_key]
 
