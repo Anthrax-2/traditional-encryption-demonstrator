@@ -15,23 +15,21 @@ def process():
     data = request.get_json()
 
     mode = data["mode"]
-    text = data["text"]
+    input = data["input"]
     key = data["key"]
     m = data["method"]
 
-    if m in CIPHERS:
-        method = CIPHERS[m]
-    else:
-        return jsonify({"error": "invalid value for method"}), 400
+    if data["input"] == "" or data["key"] == "":
+        return jsonify({"error": "please enter a valid text/key"}), 400
 
+    method = CIPHERS[m]
 
     try:
         if mode == "encrypt":
-            return jsonify({"result": method.encrypt(text, key)})
+            return jsonify({"result": method.encrypt(input, key)})
         elif mode == "decrypt":
-            return jsonify({"result": method.decrypt(text, key)})
-        else:
-            return jsonify({"error": "invalid value for mode"}), 400  
+            return jsonify({"result": method.decrypt(input, key)})
+         
     except ValueError:
         return jsonify({"error": "invalid key for cipher"}), 400
 
