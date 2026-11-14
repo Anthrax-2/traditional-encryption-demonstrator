@@ -15,26 +15,35 @@ enterBtn.addEventListener("click", async () => {
 
     const mode = document.querySelector("input[name = 'mode']:checked")
 
-    const message = {
+    
+
+    try {
+        const message = {
         method: methods.value,
         input: input.value,
         key: key.value,
         mode: mode.value
+        }
+        const response = await fetch("/api/process", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(message)
+        })
+        const data = await response.json()
+
+        if (response.ok) {
+            output.value = data["result"]
+            errorField.textContent = ""
+        } else {
+            errorField.textContent = data["error"]
+        }
+    } catch (error) {
+
+        errorField.textContent = "Cannot reach the server. Check connection."
+        errorField.style.color = "rgb(177, 194, 22)"
     }
+        
 
-    const response = await fetch("/api/process", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(message)
-    })
-
-    const data = await response.json()
-
-    if (response.ok) {
-        output.value = data["result"]
-        errorField.innerHTML = ""
-    } else {
-        errorField.innerHTML = data["error"]
-    }
+    
     
 })
