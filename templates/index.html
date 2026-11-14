@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Traditional Encryption Methods Demonstrator</title>
+    </head>
+    <body>
+        <h1>Welcome to my TEMC!</h1>
+        <p>By: Amer Tarek Aziz</p>
+        <a href="https://github.com/Anthrax-2">My GitHub</a>
+
+        <div>
+            <select id="methods">
+                {% for key in ciphers %}
+                    <option value="{{ key }}">{{ key }}</option>
+                {% endfor %}
+            </select>
+            <label for="text">Enter text:</label>
+            <input type="text" name="text" id="text">
+            <label for="key">Enter key:</label>
+            <input type="text" name="key" id="key">
+            <label for="output">Output:</label>
+            <input type="text" name="output" id="output" readonly>
+
+            <input type="radio" name="mode" id="encrypt" value="encrypt" checked>
+            <label for="encrypt">Encrypt</label>
+            <input type="radio" name="mode" id="decrypt" value="decrypt">
+            <label for="decrypt">Decrypt</label>
+            <button type="button"  id="enter">Enter</button>
+        </div>
+    </body>
+
+    
+</html>
