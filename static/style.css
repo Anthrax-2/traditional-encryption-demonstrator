@@ -78,7 +78,7 @@ input[readonly] {
 
 select {
     border: inset;
-    height: 1.7rem;
+    height: 2.3rem;
     outline: none;
     padding: 0.2rem;
     /* border-radius: 10px; */
@@ -101,7 +101,7 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
     margin: 0.5rem 0 0.5rem 0;
     accent-color: rgb(100, 100, 100);
 }
