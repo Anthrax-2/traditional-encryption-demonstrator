@@ -7,15 +7,19 @@ const key = document.querySelector("#key")
 const output = document.querySelector("#output")
 
 const enterBtn = document.querySelector("#enter")
+const swapBtn = document.querySelector("#swap")
 
 const errorField = document.querySelector("#error")
 
+const clearInput = document.querySelector("#clear-input")
+const clearKey = document.querySelector("#clear-key")
+const clearOutput = document.querySelector("#clear-output")
+
+const clearAll = document.querySelector("#clear-all")
 
 enterBtn.addEventListener("click", async () => {
 
     const mode = document.querySelector("input[name = 'mode']:checked")
-
-    
 
     try {
         const message = {
@@ -42,8 +46,32 @@ enterBtn.addEventListener("click", async () => {
         errorField.textContent = "Cannot reach the server. Check connection."
         errorField.style.color = "rgb(177, 194, 22)"
     }
-        
+          
+})
 
+swapBtn.addEventListener("click", () => {
     
-    
+    let temp = ""
+    temp = input.value
+    input.value = output.value
+    output.value = temp
+
+})
+
+clearInput.addEventListener("click", () => {
+    input.value = ""
+})
+
+clearKey.addEventListener("click", () => {
+    key.value = ""
+})
+
+clearOutput.addEventListener("click", () => {
+    output.value = ""
+})
+
+clearAll.addEventListener("click", () => {
+    input.value = ""
+    key.value = ""
+    output.value = ""
 })
