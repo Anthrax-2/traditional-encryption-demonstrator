@@ -11,50 +11,55 @@
     <body>
 
         <div class="all">
+
             <header>
                 <h1>Welcome to my TEMC!</h1>
                 <p>By: Amer Tarek Aziz</p>
                 <p>My GitHub:</p><a href="https://github.com/Anthrax-2">https://github.com/Anthrax-2</a>
             </header>
+
             <div class="content">
+
                 <label for="methods">Select encryption method:</label>
                 <select id="methods">
                     {% for key in ciphers %}
                         <option value="{{ key }}">{{ key }}</option>
                     {% endfor %}
                 </select>
+
                 <label for="input">Enter text:</label>
                 <div class="field-wrapper">
                     <input type="text" name="input" id="input">
                     <button type="button" id="clear-input">X</button>
                 </div>
-                <label for="key">Enter key:</label>
 
+                <label for="key">Enter key:</label>
                 <div class="field-wrapper">
                     <input type="text" name="key" id="key">
                     <button type="button" id="clear-key">X</button>
                 </div>
 
-                
                 <label for="output">Output:</label>
                 <div class="field-wrapper">
                     <input type="text" name="output" id="output" readonly>
                     <button type="button" id="clear-output">X</button>
                 </div>
+
                 <div class="modes">
-            
                     <label for="encrypt"><input type="radio" name="mode" id="encrypt" value="encrypt" checked> Encrypt </label>
-            
                     <label for="decrypt"><input type="radio" name="mode" id="decrypt" value="decrypt"> Decrypt </label>
-            
                 </div>
+
                 <div class="buttons">
+
                     <button type="button" id="enter">Enter</button>
                     <button type="button" id="swap">Swap</button>
                     <button type="button" id="clear-all">Clear</button>
 
                 </div> 
+
                 <p id="error"></p>
+                
             </div>
         </div>
     </body>
