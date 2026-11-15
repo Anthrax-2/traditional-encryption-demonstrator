@@ -12,7 +12,7 @@ def encrypt(plain_text: str, key_str: str) -> str:
         rows = key_str.split(";")
         key = np.array([[int(x) for x in row.split(",")] for row in rows])
     except:
-        raise ValueError("input must look like: 1, 2, 3; 2, 5, 6; 7, 8, 9")
+        raise ValueError("input must look like: 1 2 3; 2 5 6; 7 8 9")
 
     n = key.shape[0]
     m = key.shape[1]
@@ -50,7 +50,7 @@ def decrypt(cipher: str, key_str: str) -> str:
         rows = key_str.split(";")
         key = np.array([[int(x) for x in row.split(",")] for row in rows])
     except:
-        raise ValueError("input must look like: 1, 2, 3; 2, 5, 6; 7, 8, 9")
+        raise ValueError("input must look like: 1 2 3; 2 5 6; 7 8 9")
 
     n = key.shape[0]
     m = key.shape[1]
