@@ -49,7 +49,7 @@ body {
 
 .all {
     border: inset 10px black;
-    padding: 1rem;
+    padding: 2rem;
     background-color: rgb(214, 214, 214);
 }
 
@@ -58,7 +58,7 @@ input[type="text"] {
     background-color: rgb(214, 214, 214);
     /* border-radius: 10px; */
     height: 1.5rem;
-    width: 90%;
+    width: 100%;
     outline: none;
     padding: 0.2rem;
     font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
@@ -84,6 +84,7 @@ select {
     /* border-radius: 10px; */
     background-color: rgb(214, 214, 214);
     font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+    width: 57.5%;
 }
 
 .content {
@@ -132,8 +133,10 @@ select {
 }
 
 .field-wrapper {
-    width: 80%;
+    /* width: 70%; */
     display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
 }
 
 .field-wrapper button {
@@ -159,3 +162,14 @@ select:hover,
     border: inset;
     background-color: rgb(150, 150, 150);
 }  
+
+.input-field,
+.key-field,
+.output-field,
+.select-field {
+    display: flex;
+    text-wrap: nowrap;
+    align-items: center;
+    width: 90%;
+    justify-content: space-between;
+}
