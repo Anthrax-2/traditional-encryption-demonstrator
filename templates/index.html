@@ -20,29 +20,37 @@
 
             <div class="content">
 
-                <label for="methods">Select encryption method:</label>
-                <select id="methods">
-                    {% for key in ciphers %}
-                        <option value="{{ key }}">{{ key }}</option>
-                    {% endfor %}
-                </select>
-
-                <label for="input">Enter text:</label>
-                <div class="field-wrapper">
-                    <input type="text" name="input" id="input">
-                    <button type="button" id="clear-input">X</button>
+                <div class="select-field">
+                    <label for="methods">Method:</label>
+                    <select id="methods">
+                        {% for key in ciphers %}
+                            <option value="{{ key }}">{{ key }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
-                <label for="key">Enter key:</label>
-                <div class="field-wrapper">
-                    <input type="text" name="key" id="key">
-                    <button type="button" id="clear-key">X</button>
+                <div class="input-field">
+                    <label for="input">Enter text:</label>
+                    <div class="field-wrapper">
+                        <input type="text" name="input" id="input">
+                        <button type="button" id="clear-input">X</button>
+                    </div>
                 </div>
 
-                <label for="output">Output:</label>
-                <div class="field-wrapper">
-                    <input type="text" name="output" id="output" readonly>
-                    <button type="button" id="clear-output">X</button>
+                <div class="key-field">
+                    <label for="key">Enter key:</label>
+                    <div class="field-wrapper">
+                        <input type="text" name="key" id="key">
+                        <button type="button" id="clear-key">X</button>
+                    </div>
+                </div>
+
+                <div class="output-field">
+                    <label for="output">Output:</label>
+                    <div class="field-wrapper">
+                        <input type="text" name="output" id="output" readonly>
+                        <button type="button" id="clear-output">X</button>
+                    </div>
                 </div>
 
                 <div class="modes">
