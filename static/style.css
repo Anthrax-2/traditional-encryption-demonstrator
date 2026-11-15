@@ -151,3 +151,11 @@ select:hover,
 .field-wrapper button:hover {
     border: outset rgb(100, 100, 100);
 }
+
+#enter:active,
+#swap:active,
+#clear-all:active,
+.field-wrapper button:active {
+    border: inset;
+    background-color: rgb(150, 150, 150);
+}  
