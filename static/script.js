@@ -1,6 +1,5 @@
 "use strict"
 
-
 const methods = document.querySelector("#methods")
 const input = document.querySelector("#input")
 const key = document.querySelector("#key")
@@ -45,17 +44,12 @@ enterBtn.addEventListener("click", async () => {
 
         errorField.textContent = "Cannot reach the server. Check connection."
         errorField.style.color = "rgb(177, 194, 22)"
-    }
-          
+    }    
 })
 
 swapBtn.addEventListener("click", () => {
-    
-    let temp = ""
-    temp = input.value
     input.value = output.value
-    output.value = temp
-
+    output.value = ""
 })
 
 clearInput.addEventListener("click", () => {
